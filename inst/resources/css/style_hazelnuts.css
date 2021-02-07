@@ -16,7 +16,7 @@
     --main-font: "Gelasio";
     --header-font: "Inter";
   }
-  
+
 /* ---------------------- For debugging -------------------- */
 /* two pages in a row if possible on screen */
 @media screen {
@@ -89,43 +89,40 @@ h1.title {
 /* counter */
 @page:right {
 
-    @top-center {
-      content: string(h1-title) " | ";
-      font-family: var(--header-font);
-      text-align: right;
-      margin-right: -15cm;
-      color: var(--main-color);
-    }
-
-    /* numbering */
-    @top-right {
+   /* numbering */
+    @bottom-left {
       content: counter(page);
+      color: var(--main-color);
+      border: 5px solid var(--main-color);
+      margin-right: 15cm;
+      margin-left: -3cm;
+      padding-right: 1cm;
+      padding-left: 3cm;
+      margin-bottom: 1cm;
       font-size: 14pt;
       font-weight: bold;
-      margin-left: 0cm;
-      color: var(--main-color);
     }
+
 }
 
 @page:left {
 
-    @top-center {
-      content: " | " string(h1-text);
-      font-family: var(--header-font);
-      margin-left: 1cm;
-      color: var(--main-color);
-    }
-
-    /* numbering */
-    @top-left {
+    @bottom-right {
       content: counter(page);
+      color: var(--main-color);
+      border: 5px solid var(--main-color);
+      margin-right: 15cm;
+      margin-left: -3cm;
+      padding-right: 1cm;
+      padding-left: 3cm;
+      margin-bottom: 1cm;
       font-size: 14pt;
       font-weight: bold;
-      color: var(--main-color);
     }
+
 }
 
-/* paragraph margins */
+/* paragraph margins
 .pagedjs_left_page p,  .pagedjs_left_page ul, .pagedjs_left_page h2, .pagedjs_left_page h3, .pagedjs_left_page h4 {
   margin-right: 15%
 }
@@ -133,7 +130,7 @@ h1.title {
 .pagedjs_right_page p,  .pagedjs_right_page ul, .pagedjs_right_page h2, .pagedjs_right_page h3, .pagedjs_right_page h4 {
   margin-left: 15%
 }
-
+*/
 /* ------------------------ Front Cover --------------------- */
 @page:first{
     margin: 0 0 0 0;
@@ -141,24 +138,24 @@ h1.title {
     background-image: url(../utils/line.svg), url(../utils/line.svg), var(--front-cover), var(--front-cover-2);
     background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
     background-position: 5% 40%, 95% 40%, 4cm 24cm, 0cm 0cm ;
-    background-size:  5cm, 5cm, 3cm, cover;  
+    background-size:  5cm, 5cm, 3cm, cover;
 
     @top-left-corner {
       display: none;
     }
-  
+
     @top-left {
       display: none;
     }
-    
+
     @top-center {
       display: none;
     }
-  
+
     @top-right {
       display: none;
     }
-  
+
     @top-right-corner {
       display: none;
     }
@@ -282,11 +279,11 @@ h1, h2, h3, h4 {
 
 /* ------------------------ Style ----------------------------- */
 /* colors */
-h2, h3, h4 { 
-    color: var(--secondary-color)
+h1, h2, h3, h4 {
+    color: var(--main-color)
 }
 
-h1.title, h2.author, h2.date {
+h1.title, h1.subtitle, h2.author, h2.date {
     color: #ffffff;
 }
 
@@ -294,89 +291,63 @@ h1.title, h2.author, h2.date {
 h1.title {
   font-size: 50pt;
   margin-right: 15%;
-  margin-left: 15%;
-  margin-top: 50%;
-  text-align: center;
-  font-weight: 900;
-  padding-bottom: 0;
-  padding-top: 0;
-  background: transparent;
+  font-weight: 700;
 }
 
 h1.subtitle {
-  text-transform: uppercase;
-  color: #000000;
-  font-size: 14pt;
-  font-weight: 900;
-  background: #ffffff;
-  margin-top: -70%;
-  margin-left: 40%;
-  margin-right: -20%;
-  padding-left: 2cm;
-  padding-right: 0.5cm;
-  padding-top: 0.5cm;
-  padding-bottom: 0.5cm;
+  margin-right: 15%;
+  font-size: 25pt;
 }
 
 h2.author {
-  margin-top: 110%;
-  margin-left: 60%;
+  margin-top: 70%;
+  font-size: 25pt;
 }
 
 h2.date {
-  margin-left: 60%;
-  margin-bottom: 0%;
+  font-size: 25pt;
 }
 
 /* normal headers */
 h1 {
-  font-size: 40pt;
-  color: #ffffff;
-  text-align: center;
-  padding-top: 2cm;
-  padding-bottom: 2cm;
-  background-color: var(--secondary-color);
-  background-image: url(../utils/line.svg), url(../utils/line.svg);
-  background-repeat: no-repeat, no-repeat;
-  background-position: 5% 40%, 95% 40%;
-  background-size:  5cm, 5cm;  
-  margin-right: -17%;
-  margin-left: -17%;
-  margin-top: -10%;
+  font-size: 25pt;
 }
 
 h2 {
   font-size: 24pt;
 }
 
+/* text */
+p, ul {
+  margin-right: 15%;
+}
 /* --------------------- CSS Fragmentation --------------------------- */
 /* page breaks; aka CSS fragmentation */
 .level1 {
     page: chapter;
   }
-  
-.section > h1, .section > h2, .section > h3, .section > h4, .section > h5, .section > h6 {
-  break-after: avoid;
-}
-.footenotes {
-  break-before: always;
-  break-after: always;
-}
-.figure {
-  break-inside: avoid;
-}
 
-/* do not break captions */
-caption {
-  break-inside: avoid;
-  break-after: avoid;
-}
+  .section > h1, .section > h2, .section > h3, .section > h4, .section > h5, .section > h6 {
+    break-after: avoid;
+  }
+  .footenotes {
+    break-before: always;
+    break-after: always;
+  }
+  .figure {
+    break-inside: avoid;
+  }
 
-/* misc elements */
-.subtitle span {
-  font-size: .9em;
-}
-img {
-  max-width: 100%;
-}
-  
+  /* do not break captions */
+  caption {
+    break-inside: avoid;
+    break-after: avoid;
+  }
+
+  /* misc elements */
+  .subtitle span {
+    font-size: .9em;
+  }
+  img {
+    max-width: 100%;
+  }
